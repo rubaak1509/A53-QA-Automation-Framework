@@ -64,11 +64,4 @@ public class BaseTest {
             WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
             submit.click();
         }
-
-        public void renameProfileToOriginal() throws InterruptedException {
-            WebElement renamePlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[name='name']")));
-            renamePlaylist.sendKeys(Keys.chord(Keys.COMMAND, "A", Keys.BACK_SPACE));
-            renamePlaylist.sendKeys("test-playlist");
-            renamePlaylist.sendKeys(Keys.ENTER);
-        }
     }
