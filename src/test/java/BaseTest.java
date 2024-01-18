@@ -1,10 +1,12 @@
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
+import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.annotations.*;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -62,4 +64,11 @@ public class BaseTest {
             WebElement submit = driver.findElement(By.cssSelector("button[type='submit']"));
             submit.click();
         }
-}
+
+        public void renameProfileToOriginal() throws InterruptedException {
+            WebElement renamePlaylist = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[name='name']")));
+            renamePlaylist.sendKeys(Keys.chord(Keys.COMMAND, "A", Keys.BACK_SPACE));
+            renamePlaylist.sendKeys("test-playlist");
+            renamePlaylist.sendKeys(Keys.ENTER);
+        }
+    }

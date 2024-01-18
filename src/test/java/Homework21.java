@@ -7,33 +7,35 @@ import org.testng.annotations.Test;
 
 public class Homework21 extends BaseTest {
 
-    String newPlaylistName = "new-ruba";
     @Test
     public void renamePlaylist() throws InterruptedException {
 
-    String expectedPlaylistNameUpdateMsg = "Updated playlist \"new-ruba" +
+    String expectedPlaylistNameUpdateMsg = "Updated playlist \"ruba-456" +
             ".\"";
 
-        provideEmail("demo@class.com");
-        providePassword("te$t$tudent");
+        provideEmail("rubaiyat.akram@testpro.io");
+        providePassword("Te$tPro123");
         clickSubmit();
         doubleClickPlaylistName();
-        editPlaylistName();
+        editPlaylistName("ruba-456");
        //Assertion
         Assert.assertEquals(getPlaylistNameUpdateMsg(), expectedPlaylistNameUpdateMsg);
+       //Reset playlist name back to original value in preparation for the next test run
+        doubleClickPlaylistName();
+        editPlaylistName("ruba-123");
     }
 
     public void doubleClickPlaylistName() throws InterruptedException {
-        WebElement playlistElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(8)")));
+        WebElement playlistElement = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector(".playlist:nth-child(6)")));
         actions.doubleClick(playlistElement).perform();
-        System.out.println("Button is double clicked");
     }
 
-    public void editPlaylistName() throws InterruptedException{
+    public void editPlaylistName(String playlistName) throws InterruptedException{
         WebElement renamePlaylistField = wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("[name='name']")));
-        actions.doubleClick(renamePlaylistField).perform();
-        renamePlaylistField.sendKeys(Keys.BACK_SPACE);
-        renamePlaylistField.sendKeys(newPlaylistName);
+        //Clear does not work since element has an attribute of required.
+        //Needed to use Command key to select the text to execute the clear field action on mac
+        renamePlaylistField.sendKeys(Keys.chord(Keys.COMMAND, "A", Keys.BACK_SPACE));
+        renamePlaylistField.sendKeys(playlistName);
         renamePlaylistField.sendKeys(Keys.ENTER);
     }
 
@@ -41,7 +43,5 @@ public class Homework21 extends BaseTest {
         WebElement notificationMsg =  wait.until(ExpectedConditions.visibilityOfElementLocated(By.cssSelector("div.success.show")));
         return notificationMsg.getText();
     }
-    //I add a System.out.println("Button is double clicked"); in doubleClickPlaylist() and it worked
-
 }
 
