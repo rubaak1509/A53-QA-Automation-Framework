@@ -1,30 +1,20 @@
 package pages;
 
 import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
 import org.openqa.selenium.WebDriver;
-import pages.BasePage;
+import org.openqa.selenium.WebElement;
 
 public class HomePage extends BasePage {
-    public HomePage(WebDriver givenDriver) {
+
+    public HomePage(WebDriver givenDriver){
         super(givenDriver);
     }
 
-    private By firstPlaylist = By.cssSelector(".playlist:nth-child(6)");
-    private By playlistNameField = By.cssSelector("[name='name']");
-    private By renamePlaylistSuccessMsg = By.cssSelector("div.success.show");
+    By userAvatarIcon = By.cssSelector("img.avatar");
 
-    public void doubleClickPlaylist() {
-        doubleClick(firstPlaylist);
+    //Page Methods. @Homework team - I was not able to figure out how to set up the following method using page factory. Please suggest.
+    public WebElement getUserAvatarIcon(){
+        return findElementUsingByLocator(userAvatarIcon);
     }
 
-    public void enterPlaylistName(String playlistNAme) {
-        findElement(playlistNameField).sendKeys(Keys.chord(Keys.COMMAND,"A", Keys.BACK_SPACE));
-        findElement(playlistNameField).sendKeys(playlistNAme);
-        findElement(playlistNameField).sendKeys(Keys.ENTER);
-    }
-
-    public String getRenamePlaylistSuccessMsg() {
-        return findElement(renamePlaylistSuccessMsg).getText();
-    }
 }
