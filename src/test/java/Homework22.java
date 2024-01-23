@@ -1,14 +1,12 @@
-import org.openqa.selenium.By;
-import org.openqa.selenium.Keys;
-import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.testng.Assert;
 import org.testng.annotations.Test;
+import pages.HomePage;
+import pages.LoginPage;
 
 public class Homework22 extends BaseTest {
 
     @Test
-    public void renamePlaylist() throws InterruptedException {
+    public void renamePlaylist() {
 
         String expectedPlaylistNameUpdateMsg = "Updated playlist \"ruba-456" +
                 ".\"";

@@ -1,3 +1,5 @@
+package pages;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -9,9 +11,9 @@ import java.time.Duration;
 
 public class BasePage {
 
-        public WebDriver driver;
-        public WebDriverWait wait;
-        public Actions actions;
+        protected WebDriver driver;
+        protected WebDriverWait wait;
+        protected Actions actions;
 
         public BasePage(WebDriver givenDriver) {
             driver = givenDriver;
