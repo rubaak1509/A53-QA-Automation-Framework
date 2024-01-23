@@ -6,7 +6,7 @@ import pages.LoginPage;
 public class Homework23 extends BaseTest {
 
     @Test
-    public void loginWithCorrectCredentials() {
+    public void loginWithCorrectCredentials() throws InterruptedException {
         LoginPage loginPage = new LoginPage(driver);
         HomePage homePage = new HomePage(driver);
 
