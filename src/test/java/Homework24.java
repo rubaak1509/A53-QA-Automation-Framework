@@ -3,7 +3,7 @@ import org.testng.annotations.Test;
 import pages.HomePage;
 import pages.LoginPage;
 
-public class Homework23 extends BaseTest {
+public class Homework24 extends BaseTest {
 
     @Test
     public void loginWithCorrectCredentials() throws InterruptedException {
