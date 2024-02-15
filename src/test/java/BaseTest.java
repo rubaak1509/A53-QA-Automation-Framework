@@ -66,7 +66,7 @@ public class BaseTest {
                 .withTimeout(Duration.ofSeconds(10))
                 .pollingEvery(Duration.ofSeconds(5))
                 .ignoring(NoSuchElementException.class);
-                //.ignoring(NoAlertPresentException.class);
+        //.ignoring(NoAlertPresentException.class);
         actions = new Actions(driver);
         driver.manage().window().maximize();
         //String url = BaseUrl;
